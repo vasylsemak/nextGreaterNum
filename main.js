@@ -7,16 +7,24 @@ function nextGreater(anArr) {
 
   for (let i = 0; i < anArr.length; i++) {
     let curNum = anArr[i];
+    // get index of last num in the stack
     let j = stack.length - 1;
 
+    // run until isn't empty or current number is less then previous
     while (j >= 0) {
       let prevIdx = stack[j];
 
+      // check if current number is greater
       if (curNum > anArr[prevIdx]) {
+        // if yes, make all previous = current
         result[prevIdx] = curNum;
         j--;
+        // unwind the stack
         stack.pop();
-      } else break;
+      }
+      // otherwise exit while loop and push index if curNum to stack
+      // that means curNum < any number before in array
+      else break;
     }
     stack.push(i);
   }
@@ -31,28 +39,20 @@ console.log(nextGreater(myArr2));
 
 //   for (let i = 0; i < anArr.length; i++) {
 //     let curNum = anArr[i];
-//     // get index of last num in the stack
-//     let j = stack.length -1;
+//     let j = stack.length - 1;
 
-//     // run until isn't empty or current number is less then previous
-//     while(j >= 0) {
+//     while (j >= 0) {
 //       let prevIdx = stack[j];
 
-//       // check if current number is greater
-//       if(curNum > anArr[prevIdx]) {
-//         // if yes, make all previous = current
+//       if (curNum > anArr[prevIdx]) {
 //         result[prevIdx] = curNum;
 //         j--;
-//         // unwind the stack
 //         stack.pop();
-//       }
-//       // otherwise exit while loop and push index if curNum to stack
-//       // that means curNum < any number before in array
-//       else break;
+//       } else break;
 //     }
 //     stack.push(i);
 //   }
 //   return result;
 // }
 
-// nextGreater(myArr2)
+// console.log(nextGreater(myArr2));
